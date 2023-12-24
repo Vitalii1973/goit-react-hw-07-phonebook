@@ -1,0 +1,35 @@
+@keyframes rainbowBorder {
+  0% {
+    border-image-source: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  }
+
+  100% {
+    border-image-source: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  }
+}
+
+form {
+  max-width: 300px;
+  margin: 0 auto;
+  border: 2px solid;
+  border-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  border-image-slice: 1;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #a1efef;
+  animation: rainbowBorder 5s infinite;
+
+}
+
+.Filter {
+  max-width: 300px;
+  margin: 0 auto;
+  border: 2px solid;
+  border-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  border-image-slice: 1;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #a1efef;
+  margin-top: 20px;
+  animation: rainbowBorder 5s infinite;
+}

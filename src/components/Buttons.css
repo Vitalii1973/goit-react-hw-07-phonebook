@@ -1,0 +1,36 @@
+.addContactButton {
+  background-color: rgb(253, 253, 255);
+  color: #232222;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.addContactButton:hover {
+  background-color: #b5b5b6;
+}
+
+.addContactButton:active {
+  background-color: #0d47a1;
+  color: #fff;
+}
+
+.deleteContactButton {
+  width: 60px;
+  background-color: rgb(253, 253, 255);
+  color: #232222;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.deleteContactButton:hover {
+  background-color: #b5b5b6;
+}
+
+.deleteContactButton:active {
+  background-color: #0d47a1;
+  color: #fff;
+}
