@@ -1,5 +1,3 @@
-// src/components/ContactForm.jsx
-
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../redux/contacts/contactsSlice';
@@ -18,21 +16,17 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // Перевірка наявності контакту з таким ім'ям
     const isNameExists = contacts.some(contact => contact.name === name);
 
     if (isNameExists) {
-      // Якщо ім'я вже існує, вивести alert і очистити поля
       alert(`Contact with name "${name}" already exists!`);
       setName('');
       setNumber('');
       return;
     }
 
-    // Якщо ім'я не існує, додати новий контакт
     dispatch(addContact({ name, number }));
 
-    // Очистити поля після додавання контакту
     setName('');
     setNumber('');
   };

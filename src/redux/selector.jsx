@@ -1,4 +1,3 @@
-// selector.js
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectContactsState = state => state.contacts;

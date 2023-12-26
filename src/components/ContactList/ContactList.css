@@ -15,7 +15,6 @@
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
-  /* Розташувати контакти та кнопку delete по обидві сторони */
   align-items: center;
 }
 
