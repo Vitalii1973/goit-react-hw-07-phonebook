@@ -16,7 +16,7 @@ const ContactListItem = ({ contact }) => {
   };
 
   return (
-    <li>
+    <li key={contact.id}>
       {contact.name}: {contact.number}{' '}
       <button
         className="deleteContactButton"

@@ -1,15 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
   try {
-    const response = await fetch(
+    const response = await axios.get(
       'https://6585451d022766bcb8c83c57.mockapi.io/contacts'
     );
-    if (!response.ok) {
-      throw new Error('Failed to fetch contacts');
-    }
-    const data = await response.json();
-    return data;
+    return response.data;
   } catch (error) {
     console.error('Error fetching contacts:', error);
     throw error;
@@ -19,37 +16,33 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async contact => {
-    const response = await fetch(
-      'https://6585451d022766bcb8c83c57.mockapi.io/contacts',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contact),
-      }
-    );
-    const data = await response.json();
-    return data;
+    try {
+      const response = await axios.post(
+        'https://6585451d022766bcb8c83c57.mockapi.io/contacts',
+        contact
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error adding contact:', error);
+      throw error;
+    }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async contactId => {
-    await fetch(
-      `https://6585451d022766bcb8c83c57.mockapi.io/contacts/${contactId}`,
-      {
-        method: 'DELETE',
-      }
-    );
-    return contactId;
+    try {
+      await axios.delete(
+        `https://6585451d022766bcb8c83c57.mockapi.io/contacts/${contactId}`
+      );
+      return contactId;
+    } catch (error) {
+      console.error('Error deleting contact:', error);
+      throw error;
+    }
   }
 );
-
-export const setFilter = (state, action) => {
-  state.filter = action.payload;
-};
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -60,8 +53,11 @@ const contactsSlice = createSlice({
     filter: '',
   },
   reducers: {
-    setFilter,
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
   },
+
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, state => {
@@ -102,5 +98,6 @@ const contactsSlice = createSlice({
   },
 });
 
+export const { setFilter } = contactsSlice.actions;
 export default contactsSlice.reducer;
 export { addContact as addContactAsync, deleteContact as deleteContactAsync };
