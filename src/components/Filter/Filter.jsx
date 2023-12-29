@@ -5,7 +5,7 @@ import './Filter.css';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(state => state.selectfilter);
 
   const handleFilterChange = e => {
     dispatch(setFilter(e.target.value));
